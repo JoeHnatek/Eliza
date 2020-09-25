@@ -1,6 +1,13 @@
 import re
 import random
 
+
+"""
+The main function acts as the drive of the program.
+This is where we take in the User's input and bassed on their message,
+Eliza will output a response bassed on its regex rules.
+"""
+
 def main(grammar, rules):
 
 	print("Hi! I'm Eliza, an academic advisor. What is your name?")
@@ -62,7 +69,7 @@ if(__name__ == "__main__"):
 	"""
 
 	rules = [[r'\?',["Would that help you?", "Perhaps.", "Why are you asking me?"]],
-			[r'(^[a-zA-Z] [0-9]{2,4}$)', ["Tell me more about {}.", "Are you handling {} well?", "Do you want to drop {}?", "Do you want to add {}?", "You should really look more into {}, it sounds fun."]],
+			[r'(^[a-zA-Z] [0-9]{2,4}$)', ["Tell me more about {0}.", "Are you handling {0} well?", "Do you want to drop {0}?", "Do you want to add {0}?", "You should really look more into {0}, it sounds fun."]],
 			[r'(\bI\b) (\blove\b|\bhate\b|\blike\b|\bneed(ed)?\b) (.*)',['Why do you {1} {3}?']],
 			[r'\b(my)?\b \bname\b \b(is)?\b (.*)',["Hi {2}, what are you majoring in?"]],
 			[r'(\bhello\b|\bhi\b|\bhey\b)',["Hello! How is your day?", "Hi! I am an academic advisor. How can I help?"]],
@@ -73,17 +80,17 @@ if(__name__ == "__main__"):
 			[r'\bclass(es)?\b',["What class do you need to take? (ABCD 1111)", "Is that a required class?", "Do you need that to graduate?", "Do you enjoy that class?"]],
 			[r'\b(good)?bye\b',["Bye!","Thanks for talking!", "See ya! That'll be $10,000 per semester."]],
 			[r'\bpassing\b', ["Great! What can I help with?", "Can you do better than just passing?"]],
-			[r'(\bfall\b|\bspring\b|\bsummer\b)', ["{} is pretty close. Will you be ready?", "Are you going to be ready for {1}", "Do you enjoy {}?"]],
+			[r'(\bfall\b|\bspring\b|\bsummer\b)', ["{0} is pretty close. Will you be ready?", "Are you going to be ready for {0}", "Do you enjoy {0}?"]],
 			[r'\byes\b',["Great! Anything else?", "Good! I'll make a note of that.", "Great! Anything else you want to talk about?"]],
 			[r'\bno(pe)?\b', ["Why is that?", "Okay. I'll make a note of that. Anything else?"]],
 			[r'\bgrade(s)?\b', ["How are your classes going?", "Is your GPA good?"]],
-			[r'(.*) \bhomework\b (.*)', ["Have you been doing well with them?", "You say the homework {}. How so?", "Are you doing them well?"]],
+			[r'.* \bhomework\b (.*)', ["Have you been doing well with them?", "You say the homework {1}. How so?", "Are you doing them well?"]],
 			[r'.* \bwell\b', ["What is making it go well?", "Can it get any better?", "What could go better for you?", "Well? Would you want them to be better?"]],
 			[r'\b(.*)\b (\bsound(s)?\b) (.*)', ["Why does {0} sound {3}", "Would you take it if it only sounded {3}?", "{0} does sound {3}"]], # 0 1
 			[r'\b(.*)\b (\bgraduate\b) (.*)?', ["When are you graduating?", "What do you need to graduate?", "You can take your time. Why do you want to {1} {2}?", "Are you close to graduating?", "Are you excited to graduate?", "Are you ready to graduate?"]],
-			[r'(\bI\b)? (\bam\b)? \bstudy(ing)?\b (.*)', ["Do you enjoy {}?", "How is {} going?", "Is {} required to graduate?"]],#3
+			[r'(\bI\b)? (\bam\b)? \bstudy(ing)?\b (.*)', ["Do you enjoy {3}?", "How is {3} going?", "Is {3} required to graduate?"]],#3
 			[r'\bI\b (\bwant\b|\bneed\b) to (\badd\b|\bremove\b) \ba class(es)?\b', ["Why do you {0} to {1} a class?", "Sure what class? [ABCD 1111]"]],
-			[r'(\bGood\b|\bbad\b|\bokay\b)', ["Why is it {}?", "{}?", "Elaborate why it is {}."]],
+			[r'(\bGood\b|\bbad\b|\bokay\b)', ["Why is it {0}?", "{0}?", "Elaborate why it is {0}."]],
 			[r'\bnot really\b', ["That's okay. Would you consider doing research?", "Why not?", "Sure. You should really think about it."]],
 			[r'\binteresting\b', ["Why is it interesting?", "Tell me more about why you think it is.", "Would you enjoy it more?", "Would that help in class?"]],
 			[r'[\bgrade(s)\b?]',["Do you think it could be higher?", "Do you want to improve your grades?"]],
@@ -105,9 +112,9 @@ if(__name__ == "__main__"):
 			[r'\burop\b', ["UROP is a great way to do research! Do you want some info on that?"]],
 			[r'\bdont understand\b', ["It can be difficult. Can I do anything else for you?"]],
 			[r'\bits\b \bokay\b', ["Sure it is. What other help do you need?"]],
-			[r'\bthey\b \bare\b (\bgood\b|\bbad\b)', ["That's {} to hear.", "What else can I help with."]],
+			[r'\bthey\b \bare\b (\bgood\b|\bbad\b)', ["That's {0} to hear.", "What else can I help with."]],
 			[r"(\bI\b|\bI'm\b) (\bam\b)? \bhope?(ing)?\b (.*)", ["Why do you hope?", "Are you doing well?", "Can you do something instead?"]],
-			[r'(^[a-zA-Z]+$)',["Hello {}. How can I help?", "Hi there {}! What could I help you with?"]],
+			[r'(^[a-zA-Z]+$)',["Hello {0}. How can I help?", "Hi there {0}! What could I help you with?"]],
 			[r"(.*)",["Can you elaborate on that?","Interesting. Tell me more.", "How come?", "I'm sorry, I'm not quite sure I understand. Can you explain.", "How are your classes going?", "Have you thought about your future at all?"]]]
 
 
