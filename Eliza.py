@@ -1,14 +1,36 @@
+"""
+Written by: Joseph Hnatek
+Date: Sept. 21, 2020
+
+== OVERALL ==
+The main function acts as the drive of the program.
+This is where we take in the User's input and bassed on their message,
+Eliza will output a response bassed on its set rules.
+
+== EXAMPLE ==
+Eliza: Hi! I'm Eliza, an academic advisor. What is your name?
+> My name is Joe.
+Eliza: Hi Joe!. What are you majoring in?
+> I am majoring in Computer Science.
+ELiza: Do you enjoy Computer Science?
+...
+
+== ALGORITHM ==
+While the user does not say "goodbye",
+Take in their input and remove anything to the right of the period in a sentence.
+If the user inputs "goodbye", make run = false, now we can quit.
+Iterate through the rules list and gather a pattern and its potential responses.
+We try to then find a match between the pattern and the user's input.
+If match, then choose a random reply from its respective pattern and output the reply as Eliza's response.
+Continue until user says "goodby"
+If the user said "goodbye", then terminate the program.
+"""
+
+
 import re
 import random
 
-
-"""
-The main function acts as the drive of the program.
-This is where we take in the User's input and bassed on their message,
-Eliza will output a response bassed on its regex rules.
-"""
-
-def main(grammar, rules):
+def main(rules):
 
 	print("Hi! I'm Eliza, an academic advisor. What is your name?")
 
@@ -19,7 +41,7 @@ def main(grammar, rules):
 		# Take in user text
 		# lower it, split to the right so we only have the first sentence.
 		# [0] -> Indicates we access the first index in the list generated from the rstrip method.
-		userMessage = input("> ").lower().rsplit(".")[0]
+		userMessage = input("> ").rsplit(".")[0]
 
 		# User is quiting chatbot
 		if(userMessage == 'goodbye'):
@@ -46,23 +68,6 @@ def main(grammar, rules):
 
 
 if(__name__ == "__main__"):
-	
-
-	"""
-	This is a dictionary that will hold the pronouns to switch during Eliza's response.
-	"""
-
-	grammar = {"you":"me",
-				"me":"you",
-				"I've":"you have",
-				"I":"you",
-				"I'll":"you will",
-				"my":"your",
-				"am":"are",
-				"are":"am",
-				"yours":"mine",
-				"mine":"yours"
-				}
 
 	"""
 	This is a list that contains a regex with its corresponding possible responses.
@@ -121,9 +126,9 @@ if(__name__ == "__main__"):
 			[r'.* \bthat\b \bis\b (.*)', ["Why do you say it is {0}?", "{0}? Howcome?"]],
 			[r'\bthey\b \bare\b (\bgood\b|\bbad\b)', ["That's {0} to hear.", "What else can I help with."]],
 			[r"(\bI\b|\bI'm\b) (\bam\b)? \bhope?(ing)?\b (.*)", ["Why do you hope?", "Are you doing well?", "Can you do something instead?"]],
-			[r"(.*)",["Can you elaborate on that?","Interesting. Tell me more.", "How come?", "I'm sorry, I'm not quite sure I understand. Can you explain.", "How are your classes going?", "Have you thought about your future at all?"]]]
+			[r"(.*)",["Can you elaborate on that?","Interesting. Tell me more.", "How come?", "I'm sorry, I'm not quite sure I understand. Can you explain.", "Have you thought about your future at all?"]]]
 
 
 	# Start Eliza's conversation!
 
-	main(grammar, rules)
+	main(rules)
