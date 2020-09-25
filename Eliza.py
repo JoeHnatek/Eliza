@@ -1,8 +1,6 @@
 import re
 import random
 
-
-
 def main(grammar, rules):
 
 	print("Hi! I'm Eliza, an academic advisor. What is your name?")
